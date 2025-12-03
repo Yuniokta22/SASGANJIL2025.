@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Kalkulator Zakat Penghasilan</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+    }
+    .container {
+        width: 300px;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+    }
+    input {
+        width: 100%;
+        padding: 8px;
+        margin: 6px 0;
+    }
+    button {
+        width: 100%;
+        padding: 10px;
+        margin-top: 10px;
+        background: #3b82f6;
+        color: white;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+    .hasil {
+        margin-top: 20px;
+        padding: 15px;
+        border: 1px solid #aaa;
+        border-radius: 8px;
+        background: #f7f7f7;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Kalkulator Zakat Penghasilan</h2>
+
+    <label>Penghasilan Bulanan (Rp)</label>
+    <input type="number" id="penghasilan" 
+
+    <label>Pengeluaran Pokok (Rp)</label>
+    <input type="number" id="pengeluaran" 
+
+    <button onclick="hitungZakat()">Hitung Zakat</button>
+    
+    <button type="submit" onclick="Reset()">Reset</button>
+    <div class="menu-list">
+      <a href="perhitungan.html"><button class
+      ="menu-item">➡️</button></a>
+
+    <div class="hasil" id="output"></div>
+</div>
+
+<script>
+function hitungZakat() {
+    let gaji = Number(document.getElementById("penghasilan").value);
+    let pokok = Number(document.getElementById("pengeluaran").value);
+
+    let bersih = gaji - pokok;
+    let nisab = 7140498;
+
+    let wajib = bersih >= nisab;
+    let zakat = bersih * 0.025;
+
+    let text = `
+        <b>📊 HASIL PERHITUNGAN ZAKAT</b><br><br>
+        Penghasilan bulanan: Rp ${gaji.toLocaleString()}<br>
+        Pengeluaran pokok: Rp ${pokok.toLocaleString()}<br>
+        Penghasilan bersih: Rp ${bersih.toLocaleString()}<br><br>
+        Nisab: Rp ${nisab.toLocaleString()}<br><br>
+    `;
+
+    if (wajib) {
+        text += `<b style="color:green">✅️ Anda Wajib Zakat</b><br>
+        Zakat yang harus dibayar: <b>Rp ${Math.round(zakat).toLocaleString()} per bulan</b>`;
+    } else {
+        text += `<b style="color:red">❌️ Anda Tidak Wajib Zakat</b>`;
+    }
+
+    document.getElementById("output").innerHTML = text;
+}
+</script>
+
+</body>
+</html>
