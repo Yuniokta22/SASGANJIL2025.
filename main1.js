@@ -18,7 +18,7 @@ function hitungBMI() {
     else if (bmi < 30) kategori = "Kelebihan berat badan";
     else kategori = "Obesitas";
 
-    
+    let saran = "";
     if (kategori === "Kelebihan berat badan" || kategori === "Obesitas") {
         saran = " - Perlu olahraga teratur";
     }
